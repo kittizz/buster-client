@@ -115,6 +115,7 @@ func getLocation(browser, targetEnv string) (map[string]string, error) {
 			"opera":   filepath.Join(home, ".config/google-chrome/NativeMessagingHosts"),
 			//browsers
 			"chromium": filepath.Join(home, ".config/chromium/NativeMessagingHosts"),
+			"brave":    filepath.Join(home, ".config/BraveSoftware/Brave-Browser/NativeMessagingHosts"),
 		}
 		manifest := manifestDir[browser]
 		if manifest == "" {
@@ -140,6 +141,7 @@ func getLocation(browser, targetEnv string) (map[string]string, error) {
 			//browsers
 			"chromium":       filepath.Join(home, "Library/Application Support/Chromium/NativeMessagingHosts"),
 			"microsoft edge": filepath.Join(home, "Library/Application Support/Microsoft Edge/NativeMessagingHosts"),
+			"brave":          filepath.Join(home, "Library/Application Support/BraveSoftware/Brave-Browser/NativeMessagingHosts"),
 		}
 		manifest := manifestDir[browser]
 		if manifest == "" {
