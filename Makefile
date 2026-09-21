@@ -12,7 +12,14 @@ export CGO_ENABLED := 1
 GOBINDATA := $(GOPATH)/bin/go-bindata
 STANDARD_VERSION := ~/.yarn/bin/standard-version
 
-BUILD_LDFLAGS := -X=main.buildVersion=$(VERSION)
+# Native-messaging protocol version the client reports to the extension.
+# Must match the extension's expected client version exactly (see
+# cmd/client/main.go's `msg.APIVersion == buildVersion` check) — kept
+# separate from VERSION (used for release/file naming) since the two can
+# drift when this fork ships without a matching extension release.
+API_VERSION := 0.3.0
+
+BUILD_LDFLAGS := -X=main.buildVersion=$(API_VERSION)
 SETUP_LDFLAGS := $(BUILD_LDFLAGS)
 ifeq ($(GOOS), windows)
 	BUILD_LDFLAGS += -extldflags=-static
